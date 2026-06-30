@@ -1,0 +1,10 @@
+# 源代码和数据集
+main .py
+数据集.xlsx
+测试数据集.xlsx
+*.pdf
+*.txt
+
+# Python
+__pycache__/
+*.pyc
