@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凭证归档 — 信访工作自动化平台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="dot"></span> 信访自动化平台</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="data.html">数据分析</a></li>
+      <li><a href="supervision.html">智能督办</a></li>
+      <li><a href="documents.html">公文生成</a></li>
+      <li><a href="archive.html" class="current">凭证归档</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="module-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; 返回首页</a>
+    <div class="module-num">MODULE 04</div>
+    <h1>凭证归档</h1>
+    <p class="module-subtitle">送达回证图片批量导入，一键生成标准 A4 Word 归档文档。支持多图合一与单图单文两种模式，多线程处理保证 GUI 流畅。</p>
+  </div>
+</header>
+
+<main class="container" id="main-content">
+
+  <!-- Feature 1: 归档流程 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/文书归档页.webp','三步归档：选择凭证类型→导入图片→一键生成Word归档文档')">
+      <img src="images/thumb/文书归档页.webp" alt="文书归档页" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 01</div>
+      <h3>三步归档流程</h3>
+      <p class="shot-why">第一步：选择归档凭证类型（<strong>受理告知书送达回证</strong>或<strong>处理意见书送达回证</strong>）<br>第二步：导入标准回证图片（JPG/PNG）<br>第三步：一键执行归档<br><br>系统自动将图片适配到 A4 纸张尺寸（21×29.7cm），边距为 0，保证打印后与实物回证 1:1 对应。</p>
+    </div>
+  </section>
+
+  <!-- Feature 2: 双模式 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 02</div>
+      <h3>双模式归档 + 多线程</h3>
+      <p class="shot-why"><strong>多图合一</strong>：选中多张图片合并为 1 个 Word 文档——每张图片一页，适合同一案件的整套回证材料。<br><br><strong>单图单文</strong>：1 张图片生成 1 个独立 Word 文件——适合批量处理多个案件的送达回证。<br><br><strong>多线程异步处理</strong>：归档操作在 daemon 线程中执行，通过 <code>self.after</code> 回调更新 UI。按钮文字实时显示进度（如"处理中... (3/8)"），GUI 不会因大文件写入而冻结。自动检测文件名冲突并递增编号。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/文书归档页.webp','文书归档页：三步式向导 + 双模式切换 + 图片预览列表')">
+      <img src="images/thumb/文书归档页.webp" alt="文书归档页" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Context: 为什么需要这个模块 -->
+  <section class="section" style="padding-bottom:0">
+    <div class="section-tag">THE WHY</div>
+    <h2 class="section-title">为什么需要凭证归档模块？</h2>
+    <p class="section-desc">信访案件的送达回证是法定凭证，需要长期保存。传统方式是：用手机拍照 → 传到电脑 → 逐个插入 Word → 调整大小 → 打印。一个案件如果有 5 张回证，这个流程大约需要 15 分钟。本模块将整个流程压缩为 3 步、约 10 秒。</p>
+  </section>
+
+  <nav class="module-nav">
+    <a href="documents.html">&larr; 公文生成</a>
+    <span></span>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <p>信访工作自动化平台 &middot; Python 全栈独立开发</p>
+</footer>
+
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script src="lightbox.js"></script>
+</body>
+</html>

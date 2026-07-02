@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公文生成 — 信访工作自动化平台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="dot"></span> 信访自动化平台</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="data.html">数据分析</a></li>
+      <li><a href="supervision.html">智能督办</a></li>
+      <li><a href="documents.html" class="current">公文生成</a></li>
+      <li><a href="archive.html">凭证归档</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="module-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; 返回首页</a>
+    <div class="module-num">MODULE 03</div>
+    <h1>公文生成</h1>
+    <p class="module-subtitle">基于可配置话术模板和 docxtpl 引擎，将单件 OA 拟办从 10 分钟压缩至 30 秒。告知书支持批量生成 + 内存合并打印。</p>
+  </div>
+</header>
+
+<main class="container" id="main-content">
+
+  <!-- Feature 1: OA 拟办意见 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/公文生成的oa生成.webp','OA 拟办意见弹窗：自动拼接标题+拟办意见，三段式话术模板自动匹配，一键复制')">
+      <img src="images/thumb/公文生成的oa生成.webp" alt="OA拟办意见" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 01</div>
+      <h3>OA 拟办意见 — 智能提取</h3>
+      <p class="shot-why">选中案件后一键弹出。系统自动完成三件事：<br><br><strong>1. 公文标题自动拼接</strong>——根据来文类型（来信/来访/上级交办/一体化）和办结期限生成标准格式标题<br><strong>2. 拟办意见模板匹配</strong>——根据登记机构类型自动选择三段式话术（上级交办 / 一体化申诉求决 / 一体化其他）并填入 {科室}{受理期限}{办结期限}{分管领导}{协管领导} 等占位符<br><strong>3. 领导称谓规则引擎</strong>——骆卫国→骆总，张某某→张局，王某某→王处，自动拼接为"骆总、王处"格式。</p>
+    </div>
+  </section>
+
+  <!-- Technical: 话术模板配置化 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">DESIGN</div>
+      <h3>话术模板配置化 — 用户可无代码修改</h3>
+      <p class="shot-why">三段式 OA 模板存储在 <code>OA公文话术配置.txt</code> 文件中，使用 ini 风格分段管理。系统启动时自动读取，如果文件不存在或格式陈旧则<strong>自动用内置默认模板重建</strong>。用户可直接用记事本修改话术措辞、增减段落，无需改动任何 Python 代码。模板中的 <code>{dept}</code> <code>{acc_date}</code> <code>{due_date}</code> <code>{leader_str}</code> 占位符自动替换为实际数据。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/公文生成的告知书生成.webp','告知书批量生成：docxtpl 模板渲染 + 批量输出 + 合并打印件 + 已处理标记')">
+      <img src="images/thumb/公文生成的告知书生成.webp" alt="告知书生成" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Feature 2: 告知书批量生成 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/公文生成的告知书生成.webp','告知书批量生成完整功能展示')">
+      <img src="images/thumb/公文生成的告知书生成.webp" alt="告知书批量" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 02</div>
+      <h3>告知书批量生成 + 合并打印</h3>
+      <p class="shot-why"><strong>批量生成</strong>：docxtpl 引擎将案件数据渲染到标准 Word 模板，一键批量输出独立文件，以告知书编号命名。<br><br><strong>合并打印件</strong>：将多份告知书在内存中合并为一个 Word 文档，保持原始排版。适配一键双面打印——不需要逐份打开文件。<br><br><strong>智能过滤</strong>：自动隐藏超过 15 天的旧案件和已标记为"已处理"的案件，保证待办列表始终清爽。</p>
+    </div>
+  </section>
+
+  <nav class="module-nav">
+    <a href="supervision.html">&larr; 智能督办</a>
+    <a href="archive.html" class="next">凭证归档 &rarr;</a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <p>信访工作自动化平台 &middot; Python 全栈独立开发</p>
+</footer>
+
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script src="lightbox.js"></script>
+</body>
+</html>

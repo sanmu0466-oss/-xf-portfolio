@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据分析 — 信访工作自动化平台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="dot"></span> 信访自动化平台</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="data.html" class="current">数据分析</a></li>
+      <li><a href="supervision.html">智能督办</a></li>
+      <li><a href="documents.html">公文生成</a></li>
+      <li><a href="archive.html">凭证归档</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Module Hero -->
+<header class="module-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; 返回首页</a>
+    <div class="module-num">MODULE 01</div>
+    <h1>数据分析</h1>
+    <p class="module-subtitle">基于 Pandas 实时聚合引擎，年/季/月三维筛选 + 环比同比自动计算，4 个分析视图一键切换。将原来手工筛选、透视、做图的工作流程压缩为"导入即出图"。</p>
+  </div>
+</header>
+
+<main class="container" id="main-content">
+
+  <!-- Feature 1: 数据概况 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/信访数据概况页.webp','4 张 KPI 卡片实时刷新 + 12 天/月趋势折线图 + 双条形图 Top 5 排行')">
+      <img src="images/thumb/信访数据概况页.webp" alt="信访数据概况页" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 01</div>
+      <h3>数据概况 — 一屏掌控全局</h3>
+      <p class="shot-why">页面顶部 4 张 KPI 卡片（案件总数/待办数量/临期数量/办结率）实时刷新。左侧折线图展示收件趋势，支持<strong>日/月粒度一键切换</strong>——点击"近12天"看微观波动，点击"近12月"看宏观走势。右侧双条形图分别展示<strong>经办科室 Top 5</strong>和<strong>来文单位 Top 5</strong>，一眼识别哪个科室压力最大、哪个街道来件最多。</p>
+    </div>
+  </section>
+
+  <!-- Feature 2: 科室效能 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 02</div>
+      <h3>科室效能分析 — 多维下钻 + 环比对标</h3>
+      <p class="shot-why"><strong>Squarify 树状图</strong>直观展示各科室案件占比结构——面积越大案件越多。趋势折线图支持<strong>3 条曲线独立对比</strong>，可自由选择科室进行横向对标。台账含排名、案件量、占比、平均办案时长、环比增减等维度，年/季/月独立筛选。<strong>全景图表页支持 300dpi 高清导出</strong>，可直接用于 PPT 汇报。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/科室效能分析页的数据报表.webp','Squarify 树状图 + 三线对比 + 排名/占比/平均时长/环比增减')">
+      <img src="images/thumb/科室效能分析页的数据报表.webp" alt="科室效能分析" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Feature 3: 重点人画像 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/重点人画像页.webp','自动识别高频信访人：≥2 次列入台账，≥3 次标红；环形图展示信访目的构成')">
+      <img src="images/thumb/重点人画像页.webp" alt="重点人画像" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 03</div>
+      <h3>重点信访人画像 — 高风险人员自动识别</h3>
+      <p class="shot-why">系统自动筛选信访次数 <strong>≥2 次的重复信访人</strong>，≥3 次标红高亮预警。左侧<strong>环形图</strong>展示信访目的构成（申诉/求决/意见建议/揭发控告），右侧台账记录申诉频次、最新诉求、初次与最近收件日期。支持<strong>年/季/月 + 诉求类型组合筛选</strong>，帮助快速锁定需要重点关注的案件。</p>
+    </div>
+  </section>
+
+  <!-- Feature 4: 报告导出 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 04</div>
+      <h3>一键导出报告 — 10 分钟 → 30 秒</h3>
+      <p class="shot-why">选择统计年份、报表类型（月报/季报）、统计周期后，系统自动计算各来源单位与科室的案件量、占比、环比增减，<strong>拼接为格式化中文文段</strong>。无需手工统计、无需复制粘贴到 Word——文段生成后一键复制到 OA 呈批或月度报告中。将原来手工统计+撰写的 10 分钟压缩到 30 秒。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/信访数据周报、月报提取页.webp','参数化生成：选择年份·报表类型·统计周期，自动输出格式化文字报告')">
+      <img src="images/thumb/信访数据周报、月报提取页.webp" alt="周报月报提取" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Additional: 来文单位分析 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/来文单位分析页的数据报表.webp','来文单位全景分析：数据报表 + 全景条形图，支持高清导出')">
+      <img src="images/thumb/来文单位分析页的数据报表.webp" alt="来文单位分析" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 05</div>
+      <h3>来文单位 + 科室效能 — 全景图表</h3>
+      <p class="shot-why">除了数据报表视图，每个分析维度都配有<strong>全景条形图</strong>模式——横向条形图按案件量降序排列，标签清晰标注在条形末端。300dpi 高清导出按钮一键保存为 PNG，直接用于周报、月报和其他汇报场景。</p>
+    </div>
+  </section>
+
+  <!-- Module Navigation -->
+  <nav class="module-nav">
+    <span></span>
+    <a href="supervision.html" class="next">智能督办 &rarr;</a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <p>信访工作自动化平台 &middot; Python 全栈独立开发</p>
+</footer>
+
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script src="lightbox.js"></script>
+</body>
+</html>

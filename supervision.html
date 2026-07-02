@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能督办 — 信访工作自动化平台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="dot"></span> 信访自动化平台</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="data.html">数据分析</a></li>
+      <li><a href="supervision.html" class="current">智能督办</a></li>
+      <li><a href="documents.html">公文生成</a></li>
+      <li><a href="archive.html">凭证归档</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="module-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; 返回首页</a>
+    <div class="module-num">MODULE 02</div>
+    <h1>智能督办中心</h1>
+    <p class="module-subtitle">独创四维督办体系——待办清单引擎实时扫描全量数据，自动生成 4 大类、多层级督办事由，关联责任科室与经办人，配合一键督办公文实现从发现到通知的完整闭环。</p>
+  </div>
+</header>
+
+<main class="container" id="main-content">
+
+  <!-- Feature 1: 受理+办结双看板 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/督办中心的受理看板.webp','受理看板：7 天内临期案件预警，按剩余天数排序，高危≤1天标红')">
+      <img src="images/thumb/督办中心的受理看板.webp" alt="受理看板" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 01</div>
+      <h3>受理 + 办结双看板 — 分级预警</h3>
+      <p class="shot-why"><strong>受理看板</strong>：扫描"受理告知书出具期限"字段，提前 <strong>7 天</strong>预警。剩余 ≤1 天标红（高危），≤3 天标橙（紧急）。<strong>办结看板</strong>：扫描"处理意见书出具期限"字段，提前 <strong>14 天</strong>预警。剩余 ≤3 天标红，≤7 天标橙。两个看板自动过滤已出具告知书、已办结、不受理/撤案等豁免案件。</p>
+    </div>
+  </section>
+
+  <!-- Feature 2: 智能待办清单 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 02</div>
+      <h3>智能待办清单 — 四类事由引擎</h3>
+      <p class="shot-why">这是整个督办系统的<strong>核心引擎</strong>。一个无状态函数同时驱动"督办中心待办清单""今日必办弹窗""一键督办公文"三处调用。实时扫描全量数据，自动生成 4 类督办事由：<br><br><strong>&#x1F534; 限期与红线警告</strong>——受理/办结超期及临期案件<br><strong>&#x1F4BB; 系统操作待办</strong>——告知书/复函寄出后需在信访系统点击受理或办结<br><strong>&#x1F4DE; 电话回访督办</strong>——一访/二访/三访各阶段提醒<br><strong>&#x1F4C4; 文书处理与归档</strong>——呈批到期 + 归档到期提醒<br><br>每条任务自动关联<strong>责任科室 + 经办人 + 科室负责人</strong>。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/督办中心的待办清单.webp','四类督办事由：限期红线/系统操作/电话回访/文书归档，自动关联责任人')">
+      <img src="images/thumb/督办中心的待办清单.webp" alt="待办清单" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Feature 3: 三握手进程图 — SIGNATURE -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/督办中心的三握手进程图.webp','申诉求决案件流转追踪甘特图：五阶段同色系箭头，滑轨滚动,自动过滤免回访案件')">
+      <img src="images/thumb/督办中心的三握手进程图.webp" alt="三握手进程图" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">SIGNATURE</div>
+      <h3>三握手进程图 — 作品集的视觉母题</h3>
+      <p class="shot-why">专为申诉求决类案件设计的<strong>五阶段甘特图</strong>（受理 → 首访 → 二访 → 办结 → 三访）。每个案件用 Matplotlib 的 <strong>FancyArrow</strong> 绘制深蓝色同色系箭头，箭头长度和位置表示当前推进阶段。自动过滤不予受理、撤案、免回访和已归档案件。支持<strong>滑轨无缝滚动</strong>，鼠标滚轮仅在图表区域生效。<br><br>这个箭头元素也是<strong>本作品集的视觉母题</strong>——模块卡片右下角的圆形箭头按钮即提取自此。</p>
+    </div>
+  </section>
+
+  <!-- Feature 4: 今日必办 -->
+  <section class="shot-card">
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 04</div>
+      <h3>今日必办 — 每日任务一键群发</h3>
+      <p class="shot-why">从待办清单引擎中提取逾期和高优先级任务，按四类分组展示。<strong>每条任务可独立勾选</strong>，支持全选/单选。复制时<strong>自动清洗内部信息</strong>（去除经办人/负责人姓名、emoji 符号和分类方括号），输出纯净文本可<strong>直接粘贴到微信/政务群</strong>。点击"我知道了"一键关闭——为每日早会设计的极简交互。</p>
+    </div>
+    <div class="shot-img" onclick="openLB('images/full/督办中心的今日必办窗口.webp','每日核心任务汇总：四类事由分组 + 复选框交互 + 选中复制（自动清洗）→ 直接发群')">
+      <img src="images/thumb/督办中心的今日必办窗口.webp" alt="今日必办" loading="lazy" width="800">
+    </div>
+  </section>
+
+  <!-- Feature 5: 一键督办 -->
+  <section class="shot-card">
+    <div class="shot-img" onclick="openLB('images/full/督办中心的办结看板.webp','办结看板：14 天内临期案件预警，一键督办公文自动@责任科室+经办人')">
+      <img src="images/thumb/督办中心的办结看板.webp" alt="办结看板" loading="lazy" width="800">
+    </div>
+    <div class="shot-info">
+      <div class="shot-num">FEATURE 05</div>
+      <h3>一键督办公文 — 自动 @责任人</h3>
+      <p class="shot-why">在看板或待办清单中点击"一键督办"，系统自动提取当前视图中所有临期案件的<strong>科室负责人 + 经办人</strong>，去重后拼接为 @人员名单，生成格式化督办消息。一键复制后直接发送到工作群，完成从"发现问题"到"通知到人"的完整闭环。</p>
+    </div>
+  </section>
+
+  <nav class="module-nav">
+    <a href="data.html">&larr; 数据分析</a>
+    <a href="documents.html" class="next">公文生成 &rarr;</a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <p>信访工作自动化平台 &middot; Python 全栈独立开发</p>
+</footer>
+
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-close" aria-label="关闭">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script src="lightbox.js"></script>
+</body>
+</html>

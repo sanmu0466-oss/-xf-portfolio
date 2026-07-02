@@ -4,324 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>信访工作自动化平台 · 作品集</title>
-<style>
-  :root {
-    --bg: #f8f6f1;
-    --card: #fff;
-    --text: #1a1a1a;
-    --muted: #666;
-    --blue: #1e3a5f;
-    --gold: #b8942d;
-    --tag-bg: #eef3f8;
-    --border: #e5e0d5;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: "Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-    background:var(--bg); color:var(--text); line-height:1.7;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(160deg, #121e2d 0%, #1a3555 50%, #1e3a5f 100%);
-    color:#fff; text-align:center; padding:72px 32px 60px; position:relative; overflow:hidden;
-  }
-  .hero::after {
-    content:''; position:absolute; top:-30%; right:-15%;
-    width:500px; height:500px;
-    background:radial-gradient(circle, rgba(184,148,45,0.12) 0%, transparent 70%);
-    pointer-events:none;
-  }
-  .hero h1 { font-size:44px; font-weight:900; letter-spacing:3px; position:relative; z-index:1; }
-  .hero .sub { font-size:17px; color:rgba(255,255,255,0.65); margin-top:8px; position:relative; z-index:1; }
-  .hero .tags { margin-top:24px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap; position:relative; z-index:1; }
-  .hero .tags span {
-    border:1px solid rgba(255,255,255,0.22); padding:5px 18px; border-radius:20px;
-    font-size:12px; letter-spacing:1px;
-  }
-
-  /* ── LAYOUT ── */
-  .wrap { max-width:1000px; margin:0 auto; padding:0 24px; }
-  .sec { padding:52px 0; border-bottom:1px solid var(--border); }
-  .sec:last-child { border:none; }
-
-  .sec-label { font-size:11px; letter-spacing:4px; color:var(--gold); font-weight:700; margin-bottom:4px; }
-  .sec-title { font-size:26px; font-weight:900; color:var(--blue); margin-bottom:6px; }
-  .sec-desc { font-size:14px; color:var(--muted); max-width:620px; margin-bottom:32px; }
-
-  /* ── PAIN CARDS ── */
-  .pain-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:36px; page-break-inside:avoid; break-inside:avoid; }
-  @media(max-width:780px){ .pain-row{grid-template-columns:1fr 1fr;} }
-  .pain {
-    background:var(--card); border-left:3px solid var(--gold); padding:18px 20px;
-    border-radius:0 6px 6px 0; box-shadow:0 1px 6px rgba(0,0,0,0.04);
-  }
-  .pain .icon { font-size:20px; margin-bottom:4px; }
-  .pain .t { font-weight:700; font-size:13px; color:var(--blue); margin-bottom:2px; }
-  .pain .d { font-size:12px; color:var(--muted); }
-
-  /* ── SCREENSHOT ROW ── */
-  .shot { background:var(--card); border-radius:8px; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,0.06); margin-bottom:28px; transition: transform .18s, box-shadow .18s; page-break-inside:avoid; break-inside:avoid; }
-  .shot:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.10); }
-  .shot img { width:100%; display:block; border-bottom:1px solid var(--border); cursor:pointer; }
-  .shot .info { padding:18px 24px; display:flex; gap:20px; align-items:flex-start; }
-  .shot .info .n { font-size:44px; font-weight:900; color:var(--gold); line-height:1; min-width:48px; }
-  .shot .info h4 { font-size:16px; font-weight:800; color:var(--blue); margin-bottom:3px; }
-  .shot .info .why { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:8px; }
-  .shot .info .chip-row { display:flex; gap:6px; flex-wrap:wrap; }
-  .chip { background:var(--tag-bg); padding:2px 10px; font-size:11px; border-radius:10px; color:var(--blue); }
-
-  .shot-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:28px; }
-  @media(max-width:780px){ .shot-grid{grid-template-columns:1fr;} }
-
-  /* ── ARCH ── */
-  .arch-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:36px; }
-  @media(max-width:780px){ .arch-row{grid-template-columns:1fr 1fr;} }
-  .arch {
-    background:var(--card); border-radius:8px; padding:22px 18px; text-align:center;
-    box-shadow:0 1px 6px rgba(0,0,0,0.04); border-top:3px solid var(--blue);
-  }
-  .arch:nth-child(2){border-top-color:#c44} .arch:nth-child(3){border-top-color:var(--gold)} .arch:nth-child(4){border-top-color:#4a9}
-  .arch .a { font-size:28px; margin-bottom:6px; }
-  .arch .b { font-weight:700; font-size:14px; color:var(--blue); margin-bottom:2px; }
-  .arch .c { font-size:12px; color:var(--muted); }
-
-  /* ── TABLE ── */
-  .tbl { width:100%; border-collapse:collapse; background:var(--card); border-radius:8px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,0.04); margin-bottom:28px; page-break-inside:avoid; break-inside:avoid; }
-  .tbl th { background:var(--blue); color:#fff; padding:12px 16px; font-size:12px; text-align:left; font-weight:600; }
-  .tbl td { padding:10px 16px; font-size:13px; border-bottom:1px solid var(--border); }
-  .tbl tr:last-child td { border:none; }
-  .tbl .k { font-weight:700; color:var(--blue); }
-
-  /* ── LIGHTBOX ── */
-  .lb { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:999; align-items:center; justify-content:center; flex-direction:column; cursor:pointer; }
-  .lb.on { display:flex; }
-  .lb img { max-width:95vw; max-height:88vh; border-radius:4px; box-shadow:0 8px 40px rgba(0,0,0,0.5); }
-  .lb .x { position:fixed; top:16px; right:28px; font-size:36px; color:#fff; cursor:pointer; z-index:1000; }
-  .lb .cap { color:rgba(255,255,255,0.65); margin-top:12px; font-size:13px; max-width:560px; text-align:center; }
-
-  /* ── FOOTER ── */
-  .ft { text-align:center; padding:36px; color:var(--muted); font-size:12px; }
-</style>
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="images/thumb/信访数据概况页.webp">
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">跳到主要内容</a>
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="dot"></span> 信访自动化平台
+    </a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="current">首页</a></li>
+      <li><a href="data.html">数据分析</a></li>
+      <li><a href="supervision.html">智能督办</a></li>
+      <li><a href="documents.html">公文生成</a></li>
+      <li><a href="archive.html">凭证归档</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
+  <p class="overline">Case Study · 规划和自然资源系统</p>
   <h1>信访工作自动化平台</h1>
-  <p class="sub">面向规划和自然资源系统 · 全流程信访案件管理一体化解决方案</p>
-  <div class="tags">
-    <span>Python 全栈</span><span>Pandas 数据引擎</span><span>Matplotlib 可视化</span><span>Word 公文自动化</span><span>Tkinter GUI</span>
+  <p class="lead">从手工台账到智能平台的跨越——面向全流程信访案件管理的一体化解决方案，覆盖登记、交办、督办、回访、归档完整生命周期</p>
+
+  <div class="metrics-row">
+    <div class="metric-card">
+      <div class="number" data-count="4">0</div>
+      <div class="label">功能模块</div>
+    </div>
+    <div class="metric-card">
+      <div class="number" data-count="16">0</div>
+      <div class="label">功能页面</div>
+    </div>
+    <div class="metric-card">
+      <div class="number" data-count="20">0</div>
+      <div class="label">倍效率提升</div>
+    </div>
+    <div class="metric-card">
+      <div class="number" data-count="3241">0</div>
+      <div class="label">行 Python 代码</div>
+    </div>
   </div>
 </header>
 
-<div class="wrap">
+<main id="main-content">
 
-<!-- ═══════════ 痛点 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">WHY</div>
-  <div class="sec-title">业务痛点与解决思路</div>
-  <div class="pain-row">
-    <div class="pain"><div class="icon">&#x1F4CB;</div><div class="t">台账管理碎片化</div><div class="d">多来源案件缺乏统一视图，手工Excel难追溯、无法实时统计</div></div>
-    <div class="pain"><div class="icon">&#x23F0;</div><div class="t">法定限期靠人记</div><div class="d">受理5日、办结60日等多重限期靠人工记忆，超期风险高</div></div>
-    <div class="pain"><div class="icon">&#x1F4DD;</div><div class="t">公文拟办耗时</div><div class="d">每件OA需手工拼接标题、拟办意见、领导称谓，约10分钟/件</div></div>
-    <div class="pain"><div class="icon">&#x1F4DE;</div><div class="t">回访跟踪常遗漏</div><div class="d">一访/二访/三访缺乏系统化追踪，"三握手"流程合规风险高</div></div>
-  </div>
-</section>
+<!-- ═══════════ CONTEXT ═══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">The Context</div>
+    <h2 class="section-title">从手工台账到智能平台</h2>
+    <p class="section-desc">规划和自然资源局每月受理大量信访案件。传统方式依赖 Excel 手工筛选、人工记忆限期、逐件撰写公文——流程碎片化、超期风险高、重复劳动密集。本系统用 Python 全栈方案将完整业务流程数字化。</p>
 
-<!-- ═══════════ 系统架构 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">ARCHITECTURE</div>
-  <div class="sec-title">四大模块 · 全生命周期覆盖</div>
-  <div class="arch-row">
-    <div class="arch"><div class="a">&#x1F4CA;</div><div class="b">数据分析</div><div class="c">KPI大盘 · 科室效能 · 重点人画像 · 报告自动生成</div></div>
-    <div class="arch"><div class="a">&#x23F0;</div><div class="b">智能督办</div><div class="c">双看板 · 待办清单 · 甘特图 · 一键督办</div></div>
-    <div class="arch"><div class="a">&#x1F4DD;</div><div class="b">公文生成</div><div class="c">OA拟办提取 · 告知书批量生成 · 合并打印</div></div>
-    <div class="arch"><div class="a">&#x1F4C2;</div><div class="b">凭证归档</div><div class="c">送达回证图片 → Word 批量归档</div></div>
-  </div>
-</section>
-
-<!-- ═══════════ 模块一：数据分析 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">MODULE 01</div>
-  <div class="sec-title">数据分析 — 信访态势全景掌控</div>
-  <p class="sec-desc">基于 Pandas 实时聚合引擎，年/季/月三维筛选 + 环比同比计算，4个分析视图一键切换。</p>
-
-  <!-- 截图1：全局概况 -->
-  <div class="shot">
-    <img src="功能截图/信访数据概况页.png" alt="信访数据概况" loading="lazy" onclick="openLB(this.src,'全局态势一屏掌控：KPI卡片实时刷新，日/月趋势切换，科室&来文单位Top5排行')">
-    <div class="info">
-      <div class="n">01</div>
-      <div>
-        <h4>信访数据概况 — 一屏掌控全盘态势</h4>
-        <p class="why">4张KPI卡片（总数/待办/临期/办结率）实时刷新；左侧12天/12月收件趋势折线图可一键切换粒度；右侧双条形图展示经办科室和来文单位Top 5。替换了原来手工筛选、透视、做图的工作流程。</p>
-        <div class="chip-row"><span class="chip">KPI实时</span><span class="chip">日/月趋势</span><span class="chip">Top5排行</span><span class="chip">Matplotlib</span></div>
+    <div class="pain-grid">
+      <div class="pain-item animate-in stagger-1">
+        <div class="pain-badge before">&#x2716;</div>
+        <div class="pain-content">
+          <h4>传统方式</h4>
+          <p>多来源案件用 Excel 分散管理，法定限期靠人工记忆和日历提醒，公文拟办逐件手写约 10 分钟/件，回访节点依靠手工台账追溯，容易遗漏。</p>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- 截图2：科室效能 -->
-  <div class="shot">
-    <img src="功能截图/科室效能分析页的数据报表.png" alt="科室效能分析" loading="lazy" onclick="openLB(this.src,'树状图 + 趋势对比 + 数据台账：排名、案件量、占比、平均办案时长、环比增减')">
-    <div class="info">
-      <div class="n">02</div>
-      <div>
-        <h4>科室效能分析 — 多维下钻 + 环比对标</h4>
-        <p class="why">Squarify树状图直观展示各科室占比结构；趋势折线图支持3条独立对比曲线（可自由选择科室）；台账含排名、案件量、占比、平均办案时长、环比增减。年/季/月独立筛选，全景图表页支持300dpi高清导出直接用于PPT汇报。</p>
-        <div class="chip-row"><span class="chip">Squarify树状图</span><span class="chip">多对象对比</span><span class="chip">环比计算</span><span class="chip">平均时长</span><span class="chip">高清导出</span></div>
+      <div class="pain-item animate-in stagger-2">
+        <div class="pain-badge after">&#x2714;</div>
+        <div class="pain-content">
+          <h4>本系统</h4>
+          <p>Excel 拖入即出图，受理 7 天/办结 14 天双看板自动预警，OA 拟办意见一键提取 30 秒/件，三握手回访甘特图可视化追踪，全流程闭环。</p>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- 截图3：重点人画像 -->
-  <div class="shot">
-    <img src="功能截图/重点人画像页.png" alt="重点信访人画像" loading="lazy" onclick="openLB(this.src,'自动识别高频信访人：≥2次列入台账，≥3次标红；环形图展示信访目的构成')">
-    <div class="info">
-      <div class="n">03</div>
-      <div>
-        <h4>重点信访人画像 — 高风险人员自动识别</h4>
-        <p class="why">系统自动筛选≥2次的重复信访人，≥3次标红预警。左侧环形图展示信访目的构成（申诉/求决/意见建议/揭发控告），右侧台账记录申诉频次、最新诉求、初次与最近收件日期。支持年/季/月+诉求类型组合筛选。</p>
-        <div class="chip-row"><span class="chip">自动识别</span><span class="chip">高频标红</span><span class="chip">环形图</span><span class="chip">组合筛选</span></div>
+      <div class="pain-item animate-in stagger-3">
+        <div class="pain-badge before">&#x2716;</div>
+        <div class="pain-content">
+          <h4>传统方式</h4>
+          <p>月度报告需手动筛选数据、计算环比、撰写文段，从统计到成稿约 10 分钟。领导问"某个街道这个月多少件"时需临时翻表。</p>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- 截图4：报告导出 -->
-  <div class="shot">
-    <img src="功能截图/信访数据周报、月报提取页.png" alt="一键导出报告" loading="lazy" onclick="openLB(this.src,'参数化生成：选择年份·报表类型·统计周期，自动输出格式化的文字报告，一键复制到OA')">
-    <div class="info">
-      <div class="n">04</div>
-      <div>
-        <h4>一键导出报告 — 从10分钟到30秒</h4>
-        <p class="why">选择统计年份、报表类型（月报/季报）、统计周期后，系统自动计算各来源单位与科室的案件量、占比、环比增减，拼接为格式化中文文段。可直接复制到OA呈批或Word月度报告中。将原来手工统计+撰写的10分钟压缩到30秒。</p>
-        <div class="chip-row"><span class="chip">月报/季报</span><span class="chip">环比计算</span><span class="chip">自动拼接文段</span><span class="chip">一键复制</span></div>
+      <div class="pain-item animate-in stagger-4">
+        <div class="pain-badge after">&#x2714;</div>
+        <div class="pain-content">
+          <h4>本系统</h4>
+          <p>年/季/月三维筛选 + 环比同比自动计算，一键生成格式化中文文段。科室效能、来文单位分析 4 个视图一键切换，数据即问即答。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 模块二：智能督办 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">MODULE 02</div>
-  <div class="sec-title">智能督办中心 — 全流程红线预警</div>
-  <p class="sec-desc">独创四维督办体系：待办清单引擎实时扫描60+案件，自动生成4大类、多层级督办事由，关联责任科室与经办人，配合一键督办公文实现从发现到通知的完整闭环。</p>
+<!-- ═══════════ MODULES ═══════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-tag">The System</div>
+    <h2 class="section-title">四大模块 · 全生命周期覆盖</h2>
+    <p class="section-desc">从案件登记到凭证归档，每个环节都有对应的数字化工具。点击卡片查看各模块的详细设计与实现。</p>
 
-  <!-- 截图5：待办清单 -->
-  <div class="shot">
-    <img src="功能截图/督办中心的待办清单.png" alt="智能待办清单" loading="lazy" onclick="openLB(this.src,'四类督办事由全覆盖：限期红线·系统操作·电话回访·文书归档，自动关联责任科室+经办人')">
-    <div class="info">
-      <div class="n">05</div>
-      <div>
-        <h4>智能待办清单 — 四类督办事由引擎</h4>
-        <p class="why">引擎实时扫描全量数据，自动生成4类督办事由：🔴限期红线（受理/办结超期及临期）、💻系统操作（告知书/复函寄出后需进系统点击受理或办结）、📞电话回访（一访/二访/三访各阶段提醒）、📄文书归档（呈批+归档到期）。每条任务自动关联责任科室+经办人+科室负责人，可直接用于群内@督办。</p>
-        <div class="chip-row"><span class="chip">4类事由</span><span class="chip">自动关联责任人</span><span class="chip">分级展开</span><span class="chip">滚动视图</span></div>
-      </div>
+    <div class="bento-grid">
+
+      <a href="data.html" class="module-card animate-in stagger-1">
+        <div class="card-num">01</div>
+        <div class="card-icon">&#x1F4CA;</div>
+        <h3>数据分析</h3>
+        <p class="card-desc">KPI 大盘实时刷新，科室效能多维下钻，重点信访人自动识别，月度/季度报告一键导出。将原来 10 分钟的手工统计压缩到 30 秒。</p>
+        <div class="card-tags">
+          <span>Pandas 聚合引擎</span><span>Matplotlib 可视化</span><span>Squarify 树状图</span><span>环比同比</span>
+        </div>
+        <div class="card-arrow">&rarr;</div>
+      </a>
+
+      <a href="supervision.html" class="module-card animate-in stagger-2">
+        <div class="card-num">02</div>
+        <div class="card-icon">&#x23F0;</div>
+        <h3>智能督办</h3>
+        <p class="card-desc">独创四维督办体系：受理/办结双看板 + 4 类督办事由引擎 + 甘特图流转追踪 + 一键督办公文。从发现临期到通知责任人，完整闭环。</p>
+        <div class="card-tags">
+          <span>双看板预警</span><span>待办清单引擎</span><span>FancyArrow 甘特图</span><span>一键督办</span>
+        </div>
+        <div class="card-arrow">&rarr;</div>
+      </a>
+
+      <a href="documents.html" class="module-card animate-in stagger-3">
+        <div class="card-num">03</div>
+        <div class="card-icon">&#x1F4DD;</div>
+        <h3>公文生成</h3>
+        <p class="card-desc">三段式话术模板自动匹配，领导称谓规则引擎，docxtpl 批量渲染。单件 OA 拟办从 10 分钟压缩到 30 秒，告知书支持合并打印。</p>
+        <div class="card-tags">
+          <span>docxtpl 模板</span><span>TXT 配置化</span><span>规则引擎</span><span>内存合并打印</span>
+        </div>
+        <div class="card-arrow">&rarr;</div>
+      </a>
+
+      <a href="archive.html" class="module-card animate-in stagger-4">
+        <div class="card-num">04</div>
+        <div class="card-icon">&#x1F4C2;</div>
+        <h3>凭证归档</h3>
+        <p class="card-desc">送达回证图片批量导入，一键生成标准 A4 Word 归档文档。支持多图合一与单图单文两种模式，A4 纸张精准适配。</p>
+        <div class="card-tags">
+          <span>python-docx</span><span>批量归档</span><span>多图合一</span><span>多线程</span>
+        </div>
+        <div class="card-arrow">&rarr;</div>
+      </a>
+
     </div>
   </div>
+</section>
 
-  <!-- 截图6：三握手进程图 -->
-  <div class="shot">
-    <img src="功能截图/督办中心的三握手进程图.png" alt="三握手进程图" loading="lazy" onclick="openLB(this.src,'申诉求决案件流转追踪甘特图：五阶段同色系箭头，滑轨滚动，自动过滤免回访案件')">
-    <div class="info">
-      <div class="n">06</div>
-      <div>
-        <h4>三握手进程图 — 案件流转追踪池</h4>
-        <p class="why">专为申诉求决类案件设计的五阶段甘特图（受理→首访→二访→办结→三访），以深蓝色同色系箭头表示每个案件当前所处阶段。自动过滤不予受理、撤案、免回访和已归档案件。Matplotlib纯代码绘制，支持滑轨无缝滚动，鼠标滚轮仅在图表区域生效。</p>
-        <div class="chip-row"><span class="chip">五阶段甘特图</span><span class="chip">FancyArrow</span><span class="chip">滑轨滚动</span><span class="chip">智能过滤</span></div>
+<!-- ═══════════ IMPACT ═══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">The Impact</div>
+    <h2 class="section-title">量化业务价值</h2>
+    <p class="section-desc">以下数据基于实际使用场景对比（手工方式 vs 本系统），覆盖日常最高频的 5 个业务环节。</p>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-num"><span class="counter" data-target="10">0</span>×</div>
+        <div class="impact-label">数据统计效率提升</div>
+        <div class="impact-detail">手工筛选透视 → 导入即出图</div>
       </div>
-    </div>
-  </div>
-
-  <!-- 截图7：今日必办 -->
-  <div class="shot">
-    <img src="功能截图/督办中心的今日必办窗口.png" alt="今日必办" loading="lazy" onclick="openLB(this.src,'每日核心任务汇总：四类事由分组 + 复选框交互 + 选中复制（自动清洗内部信息）→ 直接发群')">
-    <div class="info">
-      <div class="n">07</div>
-      <div>
-        <h4>今日必办 — 每日任务一键群发</h4>
-        <p class="why">从待办清单引擎中提取逾期和高优先级任务，按四类分组展示。每条任务可独立勾选，支持全选/单选。复制时自动去除内部人员信息（经办人/负责人）、emoji符号和分类方括号，输出纯净文本可直接粘贴到微信/政务群。点击"我知道了"一键关闭。</p>
-        <div class="chip-row"><span class="chip">复选框交互</span><span class="chip">自动清洗</span><span class="chip">全选/单选</span><span class="chip">一键群发</span></div>
+      <div class="impact-card">
+        <div class="impact-num"><span class="counter" data-target="20">0</span>×</div>
+        <div class="impact-label">公文拟办效率提升</div>
+        <div class="impact-detail">逐件手写 → 一键提取</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num"><span class="counter" data-target="100">0</span>%</div>
+        <div class="impact-label">超期遗漏率下降</div>
+        <div class="impact-detail">人工记忆 → 系统自动预警</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num"><span class="counter" data-target="60">0</span>+</div>
+        <div class="impact-label">测试案件全覆盖</div>
+        <div class="impact-detail">模拟真实业务全生命周期</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 模块三：公文生成 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">MODULE 03</div>
-  <div class="sec-title">公文生成 — 标准化拟办 + 批量输出</div>
-  <p class="sec-desc">基于可配置话术模板和 DocxTemplate 引擎，将单件OA拟办从10分钟压缩至30秒。</p>
+<!-- ═══════════ TECH STACK ═══════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-tag">The Stack</div>
+    <h2 class="section-title">技术选型</h2>
+    <p class="section-desc">纯 Python 生态，无数据库依赖，Excel 即数据源。单个脚本即可运行，零部署成本。</p>
 
-  <!-- 截图8：OA生成 -->
-  <div class="shot">
-    <img src="功能截图/公文生成的oa生成.png" alt="OA拟办意见" loading="lazy" onclick="openLB(this.src,'OA拟办意见弹窗：自动拼接标题+拟办意见，三段式话术模板自动匹配，一键复制')">
-    <div class="info">
-      <div class="n">08</div>
-      <div>
-        <h4>OA拟办意见 — 智能提取</h4>
-        <p class="why">选中案件后一键弹出。标题根据来文类型（来信/来访/交办）和办结期限自动拼接；拟办意见根据登记机构类型自动匹配三段式话术模板（上级交办 / 一体化申诉求决 / 一体化其他）并填入{科室}{期限}{领导}等占位符。</p>
-        <div class="chip-row"><span class="chip">三段式模板</span><span class="chip">领导称谓规则</span><span class="chip">TXT配置化</span></div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4DD;</div>
+        <div class="tech-name">Tkinter</div>
+        <div class="tech-role">GUI 框架 · 4 大模块导航</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4CA;</div>
+        <div class="tech-name">Pandas</div>
+        <div class="tech-role">数据聚合 · 筛选 · 环比计算</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4C8;</div>
+        <div class="tech-name">Matplotlib</div>
+        <div class="tech-role">折线图 · 条形图 · 甘特图 · 树状图</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4C4;</div>
+        <div class="tech-name">python-docx / docxtpl</div>
+        <div class="tech-role">Word 公文生成 · 模板渲染</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x2699;</div>
+        <div class="tech-name">多线程 (threading)</div>
+        <div class="tech-role">异步处理 · GUI 防冻结</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4AC;</div>
+        <div class="tech-name">正则 + TXT 配置</div>
+        <div class="tech-role">话术模板 · 领导称谓引擎</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F4BE;</div>
+        <div class="tech-name">文件持久化</div>
+        <div class="tech-role">路径记忆 · 已处理案件库 · 白名单</div>
+      </div>
+      <div class="tech-item">
+        <div style="font-size:2rem">&#x1F3A8;</div>
+        <div class="tech-name">中文字体根治</div>
+        <div class="tech-role">动态检测 fallback · 跨平台无乱码</div>
       </div>
     </div>
   </div>
-  <!-- 截图9：告知书生成 -->
-  <div class="shot">
-    <img src="功能截图/公文生成的告知书生成.png" alt="告知书生成" loading="lazy" onclick="openLB(this.src,'告知书批量生成：docxtpl模板渲染 + 批量输出 + 合并打印件 + 已处理标记')">
-    <div class="info">
-      <div class="n">09</div>
-      <div>
-        <h4>告知书批量生成 — 模板渲染</h4>
-        <p class="why">docxtpl引擎将案件数据渲染到标准Word模板，一键批量生成独立文件（以告知书编号命名）；另支持将多份告知书内存合并为一个打印包，保持原始排版，适配一键双面打印。已处理案件自动隐藏。</p>
-        <div class="chip-row"><span class="chip">docxtpl</span><span class="chip">内存合并</span><span class="chip">一键打印</span></div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ═══════════ 技术亮点 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">TECH</div>
-  <div class="sec-title">技术实现要点</div>
-  <table class="tbl">
-    <tr><th width="160">技术点</th><th>实现方式</th></tr>
-    <tr><td class="k">中文乱码根治</td><td>动态检测系统可用中文字体 → 构建font.fallback优先级列表 → Matplotlib全局注入，根治Windows/Linux中文豆腐块问题</td></tr>
-    <tr><td class="k">话术模板配置化</td><td>ini风格TXT文件管理三段式OA模板，{dept}{acc_date}{due_date}{leader_str}占位符自动替换，用户可无代码修改</td></tr>
-    <tr><td class="k">智能领导称谓</td><td>规则引擎：骆卫国→骆总，张[某]明→张局，王[某]国→王处，自动拼接为"骆总、王处"格式</td></tr>
-    <tr><td class="k">待办清单引擎</td><td>无状态函数设计，同一引擎同时驱动"督办中心待办清单""今日必办弹窗""一键督办公文"三处调用</td></tr>
-    <tr><td class="k">甘特图纯净渲染</td><td>FancyArrow + 同色系五阶段 + 自动过滤豁免案件 + 动态画布高度(0.7英寸/行) + 滚轮事件Enter/Leave智能绑定</td></tr>
-    <tr><td class="k">多线程异步</td><td>公文生成/图片归档均使用daemon线程 + self.after回调，防止GUI冻结，进度实时回显按钮文字</td></tr>
-    <tr><td class="k">路径记忆引擎</td><td>last_path_config.txt持久化上次使用的文件夹，跨会话记忆，减少重复导航</td></tr>
-  </table>
-</section>
+</main>
 
-<!-- ═══════════ 业务价值 ═══════════ -->
-<section class="sec">
-  <div class="sec-label">IMPACT</div>
-  <div class="sec-title">量化业务价值</div>
-  <table class="tbl">
-    <tr><th>环节</th><th>传统方式</th><th>本系统</th><th>提升</th></tr>
-    <tr><td>数据统计</td><td>手工Excel筛选透视，~10分钟/次</td><td>导入即出图，实时切换4个分析视图</td><td class="k">效率提升 10×</td></tr>
-    <tr><td>期限监控</td><td>人工记忆+日历，容易遗漏</td><td>7天/14天双看板+4类督办事由+一键督办公文</td><td class="k">系统自动预警，杜绝遗漏</td></tr>
-    <tr><td>公文拟办</td><td>逐件手写，约10分钟/件</td><td>一键提取标题+拟办意见，30秒/件</td><td class="k">效率提升 20×</td></tr>
-    <tr><td>回访跟踪</td><td>手工记录，回访节点容易遗漏</td><td>甘特图可视化+自动回访提醒</td><td class="k">流程化追踪，确保合规</td></tr>
-    <tr><td>月度报告</td><td>手动统计+写稿，约10分钟</td><td>参数化一键导出完整文字文段</td><td class="k">10分钟 → 30秒</td></tr>
-  </table>
-</section>
-
-</div><!-- /.wrap -->
-
-<div class="ft">&copy; 2026 信访工作自动化平台 · Python全栈独立开发 · 60条测试案件覆盖全生命周期</div>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <p>信访工作自动化平台 &middot; Python 全栈独立开发 &middot; 60 条测试案件覆盖全生命周期</p>
+</footer>
 
 <!-- ═══════════ LIGHTBOX ═══════════ -->
 <div class="lb" id="lb" onclick="closeLB()">
-  <span class="x">&times;</span>
+  <button class="lb-close" aria-label="关闭">&times;</button>
   <img id="lb-img" src="" alt="">
-  <p class="cap" id="lb-cap"></p>
+  <p class="lb-caption" id="lb-caption"></p>
 </div>
-<script>
-function openLB(src,cap){document.getElementById('lb-img').src=src;document.getElementById('lb-cap').textContent=cap;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
-function closeLB(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLB();});
-</script>
+
+<script src="lightbox.js"></script>
+
 </body>
 </html>
